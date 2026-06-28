@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shreeji Traders — Industrial Sewing Machines Since 1998 | Precision. Performance. Trust.</title>
+  <meta name="description"
+    content="Shreeji Traders — India's premium industrial sewing machine dealer since 1998. Sales, service, genuine spare parts, AMC contracts & factory setup solutions.">
+  <meta name="keywords"
+    content="industrial sewing machine, Jack A4, Juki, Singer, Brother, sewing machine repair, AMC, spare parts India">
+  <meta property="og:title" content="Shreeji Traders — Precision. Performance. Trust.">
+  <meta property="og:description" content="Premium sewing machines, genuine spare parts, expert repairs since 1998.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════ LOADER ═══ -->
+  <div id="loader">
+    <div class="ld-logo">SHREEJI <span class="g">TRADERS</span></div>
+    <div class="ld-tagline">Precision · Performance · Trust · Since 1998</div>
+    <div class="ld-track">
+      <div class="ld-bar" id="ld-bar"></div>
+    </div>
+    <div class="ld-pct" id="ld-pct">0%</div>
+  </div>
+
+  <!-- ═══════════════════════════════════ CURSOR ═══ -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- ═══════════════════════════════════ PROGRESS ═══ -->
+  <div id="progress-bar"></div>
+
+  <!-- ═══════════════════════════════════ USER BAR ═══ -->
+  <div id="user-bar">
+    <div class="user-bar-info">
+      <span id="ub-name">Welcome</span>
+      <span class="user-badge badge-guest" id="ub-badge">GUEST</span>
+      <span id="ub-trial-info" style="font-size:11px;color:rgba(245,158,11,.7);display:none;"></span>
+    </div>
+    <div class="user-bar-actions">
+      <button class="ub-btn" id="ub-admin-btn" style="display:none;" onclick="openAdminPanel()">⚙️ Admin Panel</button>
+      <button class="ub-btn ub-logout" onclick="logout()">Sign Out</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ NAV ═══ -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">SHREEJI <span class="g">TRADERS</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#parts">Parts</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <!-- <li><a href="#dealer" id="nav-dealer-link">Dealers</a></li> -->
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-btn-ghost" onclick="openAuth('login')">Sign In</button>
+      <button class="nav-btn-gold" onclick="openAuth('register')">Get Quote</button>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('mob-nav').classList.add('open')">☰</button>
+  </nav>
+
+  <!-- ═══════════════════════════════════ MOB NAV ═══ -->
+  <div class="mob-nav" id="mob-nav">
+    <button class="mob-nav-close" onclick="document.getElementById('mob-nav').classList.remove('open')">✕</button>
+    <a href="#about" onclick="document.getElementById('mob-nav').classList.remove('open')">About</a>
+    <a href="#products" onclick="document.getElementById('mob-nav').classList.remove('open')">Products</a>
+    <a href="#parts" onclick="document.getElementById('mob-nav').classList.remove('open')">Parts</a>
+    <a href="#services" onclick="document.getElementById('mob-nav').classList.remove('open')">Services</a>
+    <a href="#industries" onclick="document.getElementById('mob-nav').classList.remove('open')">Industries</a>
+    <a href="#contact" onclick="document.getElementById('mob-nav').classList.remove('open')">Contact</a>
+    <button class="btn-gold"
+      onclick="openAuth('login');document.getElementById('mob-nav').classList.remove('open')">Sign In /
+      Register</button>
+  </div>
+
+  <!-- ═══════════════════════════════════ AUTH MODAL ═══ -->
+  <!-- <div class="modal-backdrop" id="auth-modal">
+    <div class="auth-modal">
+      <button class="auth-modal-close" onclick="closeAuth()">✕</button>
+      <div class="auth-tab-row">
+        <button class="auth-tab" id="tab-login" onclick="switchAuthTab('login')">Sign In</button>
+        <button class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Register</button>
+      </div> -->
+      <!-- LOGIN -->
+  <!-- <div id="auth-login-form">
+        <div class="auth-heading">Welcome back</div>
+        <div class="auth-sub">Sign in to your Shreeji Traders account</div>
+        <div class="auth-field"><label class="auth-label">Email</label><input type="email" class="auth-input"
+            id="login-email" placeholder="you@email.com"></div>
+        <div class="auth-field"><label class="auth-label">Password</label><input type="password" class="auth-input"
+            id="login-pass" placeholder="••••••••"></div>
+        <button class="auth-submit" onclick="doLogin()">Sign In →</button>
+        <div class="auth-divider">or</div>
+        <button class="guest-btn" onclick="doGuest()">Continue as Guest (Demo Mode)</button>
+      </div> -->
+  <!-- REGISTER -->
+  <!-- <div id="auth-register-form" style="display:none;">
+        <div class="trial-badge">⚡ 7-Day Free Trial Included</div>
+        <div class="auth-heading">Create account</div>
+        <div class="auth-sub">Get full access with a 7-day free trial</div>
+        <div class="auth-field"><label class="auth-label">Full Name</label><input type="text" class="auth-input"
+            id="reg-name" placeholder="Rajesh Sharma"></div>
+        <div class="auth-field"><label class="auth-label">Email</label><input type="email" class="auth-input"
+            id="reg-email" placeholder="you@email.com"></div>
+        <div class="auth-field"><label class="auth-label">Phone</label><input type="tel" class="auth-input"
+            id="reg-phone" placeholder="+91 98765 43210"></div>
+        <div class="auth-field"><label class="auth-label">Password</label><input type="password" class="auth-input"
+            id="reg-pass" placeholder="Create a password"></div>
+        <button class="auth-submit" onclick="doRegister()">Start Free Trial →</button>
+        <div class="auth-divider">or</div>
+        <button class="guest-btn" onclick="doGuest()">Continue as Guest</button>
+      </div>
+    </div>
+  </div> --> -->
+
+  <div class="modal-backdrop" id="auth-modal">
+    <div class="auth-modal">
+      <button class="auth-modal-close" onclick="closeAuth()">✕</button>
+      <div class="auth-tab-row">
+        <button class="auth-tab" id="tab-login" onclick="switchAuthTab('login')">Sign In</button>
+        <button class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Register</button>
+      </div>
+
+      <form id="auth-login-form" onsubmit="doLogin(event)">
+        <div class="auth-heading">Welcome back</div>
+        <div class="auth-sub">Sign in to your Shreeji Traders account</div>
+        <div class="auth-field">
+          <label class="auth-label">Email</label>
+          <input type="email" class="auth-input" id="login-email" placeholder="Enter Your Email" autocomplete="username"
+            required>
+        </div>
+        <div class="auth-field">
+          <label class="auth-label">Password</label>
+          <input type="password" class="auth-input" id="login-pass" placeholder="Enter Your Password"
+            autocomplete="current-password" required>
+        </div>
+        <button type="submit" class="auth-submit">Sign In →</button>
+        <div class="auth-divider">or</div>
+        <button type="button" class="guest-btn" onclick="doGuest()">Continue as Guest (Demo Mode)</button>
+      </form>
+
+      <form id="auth-register-form" style="display:none;" onsubmit="doRegister(event)">
+        <div class="trial-badge">⚡ 7-Day Free Trial Included</div>
+        <div class="auth-heading">Create account</div>
+        <div class="auth-sub">Get full access with a 7-day free trial</div>
+        <div class="auth-field">
+          <label class="auth-label">Full Name</label>
+          <input type="text" class="auth-input" id="reg-name" placeholder="Enter Your Name" autocomplete="name"
+            required>
+        </div>
+        <div class="auth-field">
+          <label class="auth-label">Email</label>
+          <input type="email" class="auth-input" id="reg-email" placeholder="Enter Your Email" autocomplete="email"
+            required>
+        </div>
+        <div class="auth-field">
+          <label class="auth-label">Phone</label>
+          <input type="tel" class="auth-input" id="reg-phone" placeholder="Enter Your Phone Number" autocomplete="tel">
+        </div>
+        <div class="auth-field">
+          <label class="auth-label">Password</label>
+          <input type="password" class="auth-input" id="reg-pass" placeholder="Create a password"
+            autocomplete="new-password" required>
+        </div>
+        <button type="submit" class="auth-submit">Start Free Trial →</button>
+        <div class="auth-divider">or</div>
+        <button type="button" class="guest-btn" onclick="doGuest()">Continue as Guest</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ TRIAL EXPIRED ═══ -->
+  <div class="trial-expired-overlay" id="trial-expired">
+    <div class="teo-card">
+      <div class="teo-icon">⏰</div>
+      <div class="teo-title">Your Trial Has Expired</div>
+      <div class="teo-sub">Your 7-day free trial has ended. Register or contact us to continue enjoying full access to
+        Shreeji Traders platform.</div>
+      <button class="btn-gold" style="width:100%;justify-content:center;"
+        onclick="document.getElementById('trial-expired').classList.remove('show');openAuth('register')">Activate Full
+        Access</button>
+      <br><br>
+      <button class="btn-ghost" style="width:100%;justify-content:center;"
+        onclick="document.getElementById('trial-expired').classList.remove('show');doGuest()">Continue as Guest</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ HERO ═══ -->
+  <section id="hero">
+    <div class="hero-canvas">
+      <div class="hero-bg-grad"></div>
+      <div class="hero-grid-bg"></div>
+      <div class="hero-scanline"></div>
+      <div class="hero-light-ray"></div>
+      <div class="hero-light-ray2"></div>
+      <div id="hero-particles"></div>
+      <div class="orbit-wrap" id="orbit-wrap">
+        <div class="orbit"
+          style="width:340px;height:340px;top:calc(50% - 170px);left:calc(50% - 170px);animation-duration:40s;">
+          <div class="orbit-dot"></div>
+        </div>
+        <div class="orbit"
+          style="width:500px;height:500px;top:calc(50% - 250px);left:calc(50% - 250px);animation-duration:60s;animation-direction:reverse;opacity:.5;">
+          <div class="orbit-dot" style="background:rgba(37,99,235,.6);box-shadow:0 0 8px rgba(37,99,235,.4);"></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-dot"></div>
+          🏭 India's Trusted Machine Experts
+          <span class="hero-since">Est. 1998</span>
+        </div>
+        <h1 class="hero-h1" id="hero-h1">
+          <span class="line"><span class="line-inner">Industrial Sewing</span></span>
+          <span class="line"><span class="line-inner" style="transition-delay:.12s;">Excellence For</span></span>
+          <span class="line"><span class="line-inner g" style="transition-delay:.24s;">Modern
+              Manufacturing</span></span>
+        </h1>
+        <p class="hero-sub" id="hero-sub">Premium Sewing Machines Sales, Genuine Spare Parts, Expert Repairs & Trusted
+          Service Solutions — Powering India's Garment Industry Since 1998.</p>
+        <div class="hero-cta-row" id="hero-ctas">
+          <button class="btn-gold"
+            onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Explore Machines
+            →</button>
+          <button class="btn-ghost"
+            onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Book Service</button>
+          <a href="https://wa.me/919723120363?text=Hello%20Shreeji%20Traders!%20I%20need%20assistance." class="btn-wa"
+            target="_blank">💬 WhatsApp</a>
+          <button class="btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get
+            Quote</button>
+        </div>
+        <div class="hero-stats" id="hero-stats">
+          <div class="hs-item">
+            <div class="hs-num" data-target="1500">0</div>
+            <div class="hs-lbl">Machines Sold</div>
+          </div>
+          <div class="hs-item">
+            <div class="hs-num" data-target="6000">0</div>
+            <div class="hs-lbl">Happy Customers</div>
+          </div>
+          <div class="hs-item">
+            <div class="hs-num" data-target="25">0</div>
+            <div class="hs-lbl">Years Experience</div>
+          </div>
+          <div class="hs-item">
+            <div class="hs-num" data-target="200">0</div>
+            <div class="hs-lbl">Factories Served</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hv-card">
+          <div class="hv-badge-row">
+            <span class="hv-badge">SINCE 1998</span>
+            <span class="hv-since">25+ Years of Excellence</span>
+          </div>
+          <svg class="hv-machine-svg" viewBox="0 0 340 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="60" width="200" height="70" rx="8" fill="rgba(212,175,55,0.06)"
+              stroke="rgba(212,175,55,0.25)" stroke-width="1" />
+            <rect x="30" y="70" width="120" height="50" rx="5" fill="rgba(37,99,235,0.08)" stroke="rgba(37,99,235,0.2)"
+              stroke-width="1" />
+            <circle cx="100" cy="115" r="18" fill="rgba(212,175,55,0.08)" stroke="rgba(212,175,55,0.35)"
+              stroke-width="1.5" />
+            <circle cx="100" cy="115" r="8" fill="rgba(212,175,55,0.15)" stroke="rgba(212,175,55,0.5)"
+              stroke-width="1" />
+            <rect x="155" y="80" width="55" height="30" rx="4" fill="rgba(37,99,235,0.07)" stroke="rgba(37,99,235,0.25)"
+              stroke-width="1" />
+            <line x1="160" y1="95" x2="205" y2="95" stroke="rgba(37,99,235,0.3)" stroke-width="1" />
+            <line x1="160" y1="100" x2="195" y2="100" stroke="rgba(37,99,235,0.2)" stroke-width="1" />
+            <rect x="220" y="50" width="80" height="90" rx="6" fill="rgba(30,37,53,0.9)" stroke="rgba(212,175,55,0.2)"
+              stroke-width="1" />
+            <rect x="228" y="58" width="64" height="42" rx="3" fill="rgba(37,99,235,0.1)" stroke="rgba(37,99,235,0.2)"
+              stroke-width="1" />
+            <text x="260" y="74" text-anchor="middle" fill="rgba(212,175,55,0.8)" font-size="9" font-family="Inter">JACK
+              A4</text>
+            <text x="260" y="86" text-anchor="middle" fill="rgba(148,163,184,0.6)" font-size="7"
+              font-family="Inter">5500 RPM</text>
+            <text x="260" y="96" text-anchor="middle" fill="rgba(34,197,94,0.7)" font-size="7" font-family="Inter">●
+              ONLINE</text>
+            <circle cx="236" cy="112" r="4" fill="rgba(212,175,55,0.4)" />
+            <circle cx="250" cy="112" r="4" fill="rgba(37,99,235,0.4)" />
+            <circle cx="264" cy="112" r="4" fill="rgba(34,197,94,0.4)" />
+            <line x1="100" y1="60" x2="100" y2="20" stroke="rgba(212,175,55,0.4)" stroke-width="1.5"
+              stroke-dasharray="3,3" />
+            <circle cx="100" cy="18" r="3" fill="var(--gold)" opacity="0.6" />
+            <line x1="40" y1="130" x2="220" y2="130" stroke="rgba(212,175,55,0.1)" stroke-width="8"
+              stroke-linecap="round" />
+            <text x="60" y="150" fill="rgba(148,163,184,0.4)" font-size="8" font-family="Inter">SHREEJI TRADERS — SINCE
+              1998</text>
+          </svg>
+          <div class="hv-grid">
+            <a href="#industries">
+              <div class="hv-stat">
+                <div class="hv-stat-icon">🏭</div>
+                <div class="hv-stat-lbl">Industrial</div>
+              </div>
+            </a>
+            <a href="#products">
+              <div class="hv-stat">
+                <div class="hv-stat-icon">💻</div>
+                <div class="hv-stat-lbl">Products</div>
+              </div>
+            </a>
+            <a href="#services">
+              <div class="hv-stat">
+                <div class="hv-stat-icon">🔧</div>
+                <div class="hv-stat-lbl">Service</div>
+              </div>
+            </a>
+            <a href="#parts">
+              <div class="hv-stat">
+                <div class="hv-stat-icon">📦</div>
+                <div class="hv-stat-lbl">Spare Parts</div>
+              </div>
+            </a>
+            <a href="#services">
+              <div class="hv-stat">
+                <div class="hv-stat-icon">⚙️</div>
+                <div class="hv-stat-lbl">AMC</div>
+              </div>
+            </a>
+            <a href="#about">
+              <div class="hv-stat">
+                <div class="hv-stat-icon">🏆</div>
+                <div class="hv-stat-lbl">Genuine</div>
+              </div>
+            </a>
+          </div>
+          <div class="hv-cta-strip">
+            <span class="hv-cta-text">✅ Authorized Dealer — Jack · JUKI · Singer · Brother</span>
+            <span class="hv-cta-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-ind">Scroll<div class="scroll-ind-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ ABOUT ═══ -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="reveal-l">
+        <div class="sec-label">About Shreeji Traders</div>
+        <h2 class="sec-h2">Trusted Sewing Machine <span class="t-gold">Experts Since 1998</span></h2>
+        <p class="sec-sub" style="margin-bottom:32px;">For over 25 years, Shreeji Traders has been the backbone of
+          India's garment manufacturing industry — delivering premium machines, genuine spare parts, and expert service
+          with unmatched reliability.</p>
+        <div class="about-features">
+          <div class="af-item">
+            <div class="af-icon">🏆</div>
+            <div>
+              <div class="af-title">25+ Years of Trusted Excellence</div>
+              <div class="af-text">Since 1998, we've powered thousands of factories, tailoring shops, and embroidery
+                units with machines they can rely on.</div>
+            </div>
+          </div>
+          <div class="af-item">
+            <div class="af-icon">🔧</div>
+            <div>
+              <div class="af-title">Factory-Certified Technicians</div>
+              <div class="af-text">Our engineers are trained directly by manufacturers — Jack, JUKI, Singer, Brother.
+                Repairs done right, every single time.</div>
+            </div>
+          </div>
+          <div class="af-item">
+            <div class="af-icon">📦</div>
+            <div>
+              <div class="af-title">100% Genuine Spare Parts</div>
+              <div class="af-text">Zero counterfeits. Every part sourced from authorized manufacturer channels — needles
+                to complete motor assemblies.</div>
+            </div>
+          </div>
+          <div class="af-item">
+            <div class="af-icon">🌏</div>
+            <div>
+              <div class="af-title">Pan-India Service Network</div>
+              <div class="af-text">Doorstep service across India. Whether you're a home user or a 500-machine factory,
+                we come to you.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-right reveal-r">
+        <div class="counter-grid" id="about-counters">
+          <div class="ct-item">
+            <div class="ct-num" data-target="15000">0+</div>
+            <div class="ct-lbl">Machines Sold</div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-num" data-target="9000">0+</div>
+            <div class="ct-lbl">Customers Served</div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-num" data-target="50000">0+</div>
+            <div class="ct-lbl">Repairs Completed</div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-num" data-target="75000">0+</div>
+            <div class="ct-lbl">Parts Delivered</div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-num" data-target="25">0+</div>
+            <div class="ct-lbl">Years Experience</div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-num" data-target="200">0+</div>
+            <div class="ct-lbl">Factories Supported</div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-num" data-target="100%" style="--percent: 100%;">0%</div>
+            <div class="ct-lbl">Genuine Parts Assurance</div><!-- Active Dealers -->
+          </div>
+          <div class="ct-item">
+            <div class="ct-num" data-target="12">0+</div>
+            <div class="ct-lbl">Brands Covered</div>
+          </div>
+        </div>
+        <div class="brochure-strip">
+          <div class="bro-text"><strong>Download Company Brochure</strong><span>PDF · 2.4 MB · Updated 2025</span></div>
+          <button class="btn-gold" style="padding:10px 20px;font-size:12.5px;">⬇ Download</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ PRODUCTS ═══ -->
+  <section id="products">
+    <div class="center reveal">
+      <div class="sec-label">Featured Products</div>
+      <h2 class="sec-h2">World-Class <span class="t-gold">Sewing Machines</span></h2>
+      <p class="sec-sub">Apple-precision product curation — every machine hand-selected for Indian industrial
+        conditions.</p>
+    </div>
+    <div class="prod-cats" id="prod-cats">
+      <button class="cat-btn active" onclick="filterProducts('all',this)">All Machines</button>
+      <button class="cat-btn" onclick="filterProducts('industrial',this)">Industrial</button>
+      <button class="cat-btn" onclick="filterProducts('computerized',this)">Computerized</button>
+      <button class="cat-btn" onclick="filterProducts('overlock',this)">Overlock / Interlock</button>
+      <button class="cat-btn" onclick="filterProducts('domestic',this)">Domestic</button>
+      <button class="cat-btn" onclick="filterProducts('embroidery',this)">Embroidery</button>
+    </div>
+    <div class="prod-grid" id="prod-grid">
+      <!-- Cards rendered by JS -->
+    </div>
+    <div style="text-align:center;margin-top:44px;">
+      <a href="https://wa.me/919723120363?text=I%20want%20to%20see%20your%20full%20product%20catalog" class="btn-gold"
+        target="_blank">View Full Catalog on WhatsApp →</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ SPARE PARTS ═══ -->
+  <section id="parts">
+    <div class="center reveal">
+      <div class="sec-label">Genuine Spare Parts</div>
+      <h2 class="sec-h2">Parts <span class="t-gold">Marketplace</span></h2>
+      <p class="sec-sub">Every component, 100% genuine. In stock and ready. Zero counterfeits — manufacturer-certified
+        only.</p>
+    </div>
+    <div class="parts-controls reveal">
+      <input type="text" class="parts-search" placeholder="🔍 Search parts — needle, hook, motor, belt..."
+        oninput="searchParts(this.value)">
+      <button class="cat-btn active" onclick="filterParts('all',this)">All</button>
+      <button class="cat-btn" onclick="filterParts('needles',this)">Needles</button>
+      <button class="cat-btn" onclick="filterParts('motion',this)">Motion</button>
+      <button class="cat-btn" onclick="filterParts('electrical',this)">Electrical</button>
+      <button class="cat-btn" onclick="filterParts('accessories',this)">Accessories</button>
+      <button class="cat-btn" onclick="filterParts('oils',this)">Oils & Lubricants</button>
+    </div>
+    <div class="parts-grid" id="parts-grid">
+      <!-- Parts rendered by JS -->
+    </div>
+    <div style="text-align:center;margin-top:36px;">
+      <a href="https://wa.me/919723120363?text=I%20need%20spare%20parts%20for%20my%20machine." class="btn-ghost"
+        target="_blank">Request Any Part via WhatsApp →</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ SERVICES ═══ -->
+  <section id="services">
+    <div class="center reveal">
+      <div class="sec-label">Service Solutions</div>
+      <h2 class="sec-h2">Expert Care For <span class="t-gold">Every Machine</span></h2>
+      <p class="sec-sub">From emergency repairs to annual factory contracts — certified technicians, genuine parts,
+        guaranteed results.</p>
+    </div>
+    <div class="svc-grid reveal">
+      <div class="svc-card">
+        <div class="svc-num">01</div>
+        <div class="svc-icon">🔧</div>
+        <div class="svc-title">Machine Repair</div>
+        <div class="svc-desc">Fast expert diagnosis and repair for all brands and models. Minimize production downtime.
+        </div>
+        <div class="svc-steps">
+          <div class="svc-step">Diagnosis & Assessment</div>
+          <div class="svc-step">Genuine Part Replacement</div>
+          <div class="svc-step">Calibration & Testing</div>
+          <div class="svc-step">Delivery & Warranty</div>
+        </div><a href="https://wa.me/919723120363?text=I%20need%20machine%20repair" class="svc-link"
+          target="_blank">Book Repair →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">02</div>
+        <div class="svc-icon">📋</div>
+        <div class="svc-title">AMC Contracts</div>
+        <div class="svc-desc">Annual maintenance contracts for factories. Scheduled visits, priority emergency support.
+        </div>
+        <div class="svc-steps">
+          <div class="svc-step">Needs Assessment</div>
+          <div class="svc-step">Custom AMC Plan</div>
+          <div class="svc-step">Scheduled Visits</div>
+          <div class="svc-step">Priority Response</div>
+        </div><a href="https://wa.me/919723120363?text=Tell%20me%20about%20AMC" class="svc-link" target="_blank">Get AMC
+          Quote →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">03</div>
+        <div class="svc-icon">🏭</div>
+        <div class="svc-title">Factory Setup</div>
+        <div class="svc-desc">Complete turnkey factory setup — machine selection, procurement, installation, training.
+        </div>
+        <div class="svc-steps">
+          <div class="svc-step">Layout Planning</div>
+          <div class="svc-step">Machine Procurement</div>
+          <div class="svc-step">Installation & Setup</div>
+          <div class="svc-step">Operator Training</div>
+        </div><a href="https://wa.me/919723120363?text=I%20need%20factory%20setup" class="svc-link"
+          target="_blank">Start Planning →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">04</div>
+        <div class="svc-icon">⚙️</div>
+        <div class="svc-title">Installation & Calibration</div>
+        <div class="svc-desc">Professional machine setup, calibration and operator training for every new machine.</div>
+        <div class="svc-steps">
+          <div class="svc-step">Site Preparation</div>
+          <div class="svc-step">Machine Installation</div>
+          <div class="svc-step">Precision Calibration</div>
+          <div class="svc-step">Operator Training</div>
+        </div><a href="https://wa.me/919723120363?text=I%20need%20installation" class="svc-link"
+          target="_blank">Schedule →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">05</div>
+        <div class="svc-icon">🆘</div>
+        <div class="svc-title">Emergency Breakdown</div>
+        <div class="svc-desc">Production-critical breakdowns need urgent action. Same-day emergency visits available.
+        </div>
+        <div class="svc-steps">
+          <div class="svc-step">Call / WhatsApp Alert</div>
+          <div class="svc-step">Dispatch Technician</div>
+          <div class="svc-step">On-site Diagnosis</div>
+          <div class="svc-step">Rapid Resolution</div>
+        </div><a href="tel:+919723120363" class="svc-link">Call Now — Emergency →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">06</div>
+        <div class="svc-icon">🔬</div>
+        <div class="svc-title">Preventive Maintenance</div>
+        <div class="svc-desc">Catch problems before they become costly breakdowns. Significantly extends machine life.
+        </div>
+        <div class="svc-steps">
+          <div class="svc-step">Health Check</div>
+          <div class="svc-step">Lubrication & Cleaning</div>
+          <div class="svc-step">Part Inspection</div>
+          <div class="svc-step">Performance Report</div>
+        </div><a href="https://wa.me/919723120363?text=I%20need%20preventive%20maintenance" class="svc-link"
+          target="_blank">Book Visit →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">07</div>
+        <div class="svc-icon">🔄</div>
+        <div class="svc-title">Machine Upgradation</div>
+        <div class="svc-desc">Upgrade older machines with modern components — servo motors, control panels, LED systems.
+        </div>
+        <div class="svc-steps">
+          <div class="svc-step">Upgrade Assessment</div>
+          <div class="svc-step">Component Selection</div>
+          <div class="svc-step">Retrofit Installation</div>
+          <div class="svc-step">Testing & Handover</div>
+        </div><a href="https://wa.me/919723120363?text=I%20need%20machine%20upgrade" class="svc-link"
+          target="_blank">Inquire →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">08</div>
+        <div class="svc-icon">💡</div>
+        <div class="svc-title">Technical Consultation</div>
+        <div class="svc-desc">Expert advice on machine selection, production line optimization, and capacity planning.
+        </div>
+        <div class="svc-steps">
+          <div class="svc-step">Requirements Discussion</div>
+          <div class="svc-step">Site Analysis</div>
+          <div class="svc-step">Recommendation Report</div>
+          <div class="svc-step">Implementation Plan</div>
+        </div><a href="https://wa.me/919723120363?text=I%20need%20technical%20consultation" class="svc-link"
+          target="_blank">Consult →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ INDUSTRIES ═══ -->
+  <section id="industries">
+    <div class="center reveal">
+      <div class="sec-label">Industries We Serve</div>
+      <h2 class="sec-h2">Powering India's <span class="t-gold">Textile Ecosystem</span></h2>
+      <p class="sec-sub">From 500-machine export houses to single-operator tailoring shops — we have the right solution
+        for every scale.</p>
+    </div>
+    <div class="ind-grid">
+      <div class="ind-card reveal">
+        <div class="ind-icon">🏭</div>
+        <div class="ind-name">Garment Factories</div>
+        <div class="ind-desc">High-volume industrial machines, AMC contracts and factory setup for continuous
+          production.</div>
+      </div>
+      <div class="ind-card reveal">
+        <div class="ind-icon">🧶</div>
+        <div class="ind-name">Textile Industries</div>
+        <div class="ind-desc">Specialized machines for fabric processing, stitching and large-scale finishing.</div>
+      </div>
+      <div class="ind-card reveal">
+        <div class="ind-icon">👗</div>
+        <div class="ind-name">Fashion Designers</div>
+        <div class="ind-desc">Precision domestic and semi-industrial machines for boutique fashion studios.</div>
+      </div>
+      <div class="ind-card reveal">
+        <div class="ind-icon">✂️</div>
+        <div class="ind-name">Tailoring Shops</div>
+        <div class="ind-desc">Reliable machines and prompt doorstep repair for local tailors and alterations shops.
+        </div>
+      </div>
+      <div class="ind-card reveal">
+        <div class="ind-icon">🎨</div>
+        <div class="ind-name">Embroidery Units</div>
+        <div class="ind-desc">Advanced computerized embroidery and interlock machines for decorative textile production.
+        </div>
+      </div>
+      <div class="ind-card reveal">
+        <div class="ind-icon">🏫</div>
+        <div class="ind-name">Training Institutes</div>
+        <div class="ind-desc">Reliable, affordable machines for fashion colleges and vocational training centers.</div>
+      </div>
+      <div class="ind-card reveal">
+        <div class="ind-icon">📦</div>
+        <div class="ind-name">Export Houses</div>
+        <div class="ind-desc">Full factory solutions for companies producing garments for international markets.</div>
+      </div>
+      <div class="ind-card reveal">
+        <div class="ind-icon">🏠</div>
+        <div class="ind-name">Home Users</div>
+        <div class="ind-desc">Quality domestic machines and expert home service for enthusiastic home sewers.</div>
+      </div>
+      <div class="ind-card reveal">
+        <div class="ind-icon">🤝</div>
+        <div class="ind-name">Dealer Networks</div>
+        <div class="ind-desc">Partner dealership opportunities for entrepreneurs across India.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ WHY US ═══ -->
+  <section id="why">
+    <div class="center reveal" style="margin-bottom:56px;">
+      <div class="sec-label">Why Choose Us</div>
+      <h2 class="sec-h2">Shreeji Traders vs <span class="t-gold">The Rest</span></h2>
+      <p class="sec-sub">25 years of proof that genuine quality and honest service build lasting partnerships.</p>
+    </div>
+    <div class="why-layout">
+      <div class="reveal-l">
+        <div class="cmp-table">
+          <div class="cmp-head">
+            <div class="cmp-hcell">Feature</div>
+            <div class="cmp-hcell us">Shreeji Traders</div>
+            <div class="cmp-hcell">Others</div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-cell feat">Genuine Parts</div>
+            <div class="cmp-cell us"><span class="ck">✓</span> Always Original</div>
+            <div class="cmp-cell"><span class="cx">✗</span> Often Counterfeit</div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-cell feat">Certified Techs</div>
+            <div class="cmp-cell us"><span class="ck">✓</span> Factory Trained</div>
+            <div class="cmp-cell"><span class="cx">✗</span> Unverified</div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-cell feat">Response Time</div>
+            <div class="cmp-cell us"><span class="ck">✓</span> Same Day</div>
+            <div class="cmp-cell"><span class="cx">✗</span> Days or Weeks</div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-cell feat">Warranty</div>
+            <div class="cmp-cell us"><span class="ck">✓</span> Full Support</div>
+            <div class="cmp-cell"><span class="cx">✗</span> Limited / None</div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-cell feat">AMC Available</div>
+            <div class="cmp-cell us"><span class="ck">✓</span> Custom Plans</div>
+            <div class="cmp-cell"><span class="cx">✗</span> Rarely</div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-cell feat">Doorstep Service</div>
+            <div class="cmp-cell us"><span class="ck">✓</span> Pan-India</div>
+            <div class="cmp-cell"><span class="cx">✗</span> Bring It In</div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-cell feat">Brand Coverage</div>
+            <div class="cmp-cell us"><span class="ck">✓</span> All Major Brands</div>
+            <div class="cmp-cell"><span class="cx">✗</span> 1-2 Brands</div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-cell feat">24/7 Support</div>
+            <div class="cmp-cell us"><span class="ck">✓</span> WhatsApp Always</div>
+            <div class="cmp-cell"><span class="cx">✗</span> Office Hours Only</div>
+          </div>
+        </div>
+      </div>
+      <div class="why-pts reveal-r">
+        <div class="wp-item">
+          <div class="wp-icon">🏅</div>
+          <div>
+            <div class="wp-title">100% Genuine Parts Guarantee</div>
+            <div class="wp-text">Every spare part sourced directly from authorized manufacturer channels. Written
+              guarantee on authenticity — no grey market, ever.</div>
+          </div>
+        </div>
+        <div class="wp-item">
+          <div class="wp-icon">👨‍🔧</div>
+          <div>
+            <div class="wp-title">Factory-Certified Engineers</div>
+            <div class="wp-text">Our technicians receive direct training from Jack, JUKI, Singer and Brother factories.
+              Every repair meets manufacturer specifications.</div>
+          </div>
+        </div>
+        <div class="wp-item">
+          <div class="wp-icon">⚡</div>
+          <div>
+            <div class="wp-title">Same-Day Emergency Response</div>
+            <div class="wp-text">Production downtime is money lost. We prioritize emergency calls and aim for same-day
+              technician dispatch across our service zones.</div>
+          </div>
+        </div>
+        <div class="wp-item">
+          <div class="wp-icon">💰</div>
+          <div>
+            <div class="wp-title">Transparent Pricing</div>
+            <div class="wp-text">No hidden charges, no surprise bills. You receive a clear quote before any work begins
+              and pay exactly what was agreed.</div>
+          </div>
+        </div>
+        <div class="wp-item">
+          <div class="wp-icon">🤝</div>
+          <div>
+            <div class="wp-title">25+ Years of Trust</div>
+            <div class="wp-text">Since 1998, thousands of factories and tailoring shops have trusted Shreeji Traders.
+              Our reputation is built on relationships, not transactions.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ TESTIMONIALS ═══ -->
+  <section id="testimonials">
+    <div class="center reveal">
+      <div class="sec-label">Customer Stories</div>
+      <h2 class="sec-h2">25 Years of <span class="t-gold">Happy Customers</span></h2>
+      <p class="sec-sub">Thousands of factories and tailors across India trust Shreeji Traders. Here's what they say.
+      </p>
+    </div>
+    <div class="testi-track-wrap">
+      <div class="testi-track" id="testi-track">
+        <div class="testi-card">
+          <div class="tc-stars">★★★★★</div>
+          <div class="tc-quote">"Shreeji Traders installed 60 Jack A4 machines in our new factory. Entire setup done in
+            4 days. The team's expertise is unmatched in the industry."</div>
+          <div class="tc-author">
+            <div class="tc-av">RK</div>
+            <div>
+              <div class="tc-name">Rajesh Kumar</div>
+              <div class="tc-loc">Factory Owner, Surat</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="tc-stars">★★★★★</div>
+          <div class="tc-quote">"Their AMC contract has been a complete game-changer. Zero unplanned downtime in 2
+            years. The preventive visits catch every issue before it escalates."</div>
+          <div class="tc-author">
+            <div class="tc-av">PS</div>
+            <div>
+              <div class="tc-name">Priya Shah</div>
+              <div class="tc-loc">Production Head, Ahmedabad</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="tc-stars">★★★★★</div>
+          <div class="tc-quote">"Needed Juki DDL spare parts urgently for an export deadline. Shreeji delivered genuine
+            parts within 3 hours. Absolutely saved us."</div>
+          <div class="tc-author">
+            <div class="tc-av">MJ</div>
+            <div>
+              <div class="tc-name">Mohammed Juned</div>
+              <div class="tc-loc">Export House, Mumbai</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="tc-stars">★★★★★</div>
+          <div class="tc-quote">"Been a loyal customer since 2003. Twenty years and counting. Best prices, most honest
+            people in the industry — never once disappointed."</div>
+          <div class="tc-author">
+            <div class="tc-av">AP</div>
+            <div>
+              <div class="tc-name">Anita Patel</div>
+              <div class="tc-loc">Master Tailor, Vadodara</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="tc-stars">★★★★★</div>
+          <div class="tc-quote">"Their technical consultation helped us optimize our entire production line. We
+            increased output by 35% without buying a single new machine."</div>
+          <div class="tc-author">
+            <div class="tc-av">SG</div>
+            <div>
+              <div class="tc-name">Suresh Gupta</div>
+              <div class="tc-loc">Knitwear Factory, Ludhiana</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="tc-stars">★★★★★</div>
+          <div class="tc-quote">"The Jack A4C computerized machine they recommended has transformed our embroidery unit.
+            Precision is perfect and the after-sales support is excellent."</div>
+          <div class="tc-author">
+            <div class="tc-av">NM</div>
+            <div>
+              <div class="tc-name">Neha Modi</div>
+              <div class="tc-loc">Embroidery Studio, Jaipur</div>
+            </div>
+          </div>
+        </div>
+        <!-- Duplicate for infinite scroll -->
+        <div class="testi-card">
+          <div class="tc-stars">★★★★★</div>
+          <div class="tc-quote">"Shreeji Traders installed 60 Jack A4 machines in our new factory. Entire setup done in
+            4 days. The team's expertise is unmatched in the industry."</div>
+          <div class="tc-author">
+            <div class="tc-av">RK</div>
+            <div>
+              <div class="tc-name">Rajesh Kumar</div>
+              <div class="tc-loc">Factory Owner, Surat</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="tc-stars">★★★★★</div>
+          <div class="tc-quote">"Their AMC contract has been a complete game-changer. Zero unplanned downtime in 2
+            years. The preventive visits catch every issue before it escalates."</div>
+          <div class="tc-author">
+            <div class="tc-av">PS</div>
+            <div>
+              <div class="tc-name">Priya Shah</div>
+              <div class="tc-loc">Production Head, Ahmedabad</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="tc-stars">★★★★★</div>
+          <div class="tc-quote">"Needed Juki DDL spare parts urgently for an export deadline. Shreeji delivered genuine
+            parts within 3 hours. Absolutely saved us."</div>
+          <div class="tc-author">
+            <div class="tc-av">MJ</div>
+            <div>
+              <div class="tc-name">Mohammed Juned</div>
+              <div class="tc-loc">Export House, Mumbai</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="tc-stars">★★★★★</div>
+          <div class="tc-quote">"Been a loyal customer since 2003. Twenty years and counting. Best prices, most honest
+            people in the industry — never once disappointed."</div>
+          <div class="tc-author">
+            <div class="tc-av">AP</div>
+            <div>
+              <div class="tc-name">Anita Patel</div>
+              <div class="tc-loc">Master Tailor, Vadodara</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="tc-stars">★★★★★</div>
+          <div class="tc-quote">"Their technical consultation helped us optimize our entire production line. We
+            increased output by 35% without buying a single new machine."</div>
+          <div class="tc-author">
+            <div class="tc-av">SG</div>
+            <div>
+              <div class="tc-name">Suresh Gupta</div>
+              <div class="tc-loc">Knitwear Factory, Ludhiana</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="tc-stars">★★★★★</div>
+          <div class="tc-quote">"The Jack A4C computerized machine they recommended has transformed our embroidery unit.
+            Precision is perfect and the after-sales support is excellent."</div>
+          <div class="tc-author">
+            <div class="tc-av">NM</div>
+            <div>
+              <div class="tc-name">Neha Modi</div>
+              <div class="tc-loc">Embroidery Studio, Jaipur</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ DEALER SECTION ═══ -->
+  <!-- <section id="dealer">-->
+  <!--<div id="dealer-content">--><!-- JS renders this based on toggle --><!--</div>-->
+  <!-- </section> -->
+
+  <!-- ═══════════════════════════════════ CTA BANNER ═══ -->
+  <div class="cta-banner reveal">
+    <h2>Get Expert Sewing Machine <span class="t-gold">Solutions Today</span></h2>
+    <p>New machine, spare parts, urgent repair or factory setup — we're one call away. Serving India since 1998.</p>
+    <div class="cta-row">
+      <button class="btn-gold" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a
+        Free Quote</button>
+      <a href="https://wa.me/919723120363" class="btn-wa" target="_blank">💬 WhatsApp Now</a>
+      <a href="tel:+919723120363" class="btn-ghost">📞 Call Directly</a>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ CONTACT ═══ -->
+  <section id="contact">
+    <div class="contact-layout">
+      <div class="reveal-l">
+        <div class="sec-label">Contact Us</div>
+        <h2 class="sec-h2">Let's Talk <span class="t-gold">Machines</span></h2>
+        <p class="sec-sub" style="margin-bottom:32px;">Ready to help with machine selection, spare parts, or expert
+          service. Since 1998, always here for you.</p>
+        <div class="contact-infos">
+          <div class="ci-item">
+            <div class="ci-icon">📞</div>
+            <div>
+              <div class="ci-lbl">Phone / WhatsApp</div>
+              <div class="ci-val"><a href="tel:+919723120363">+91 97231 20363</a></div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">📧</div>
+            <div>
+              <div class="ci-lbl">Email</div>
+              <div class="ci-val"><a href="mailto:Shreejitraders120363@gmail.com">Shreejitraders120363@gmail.com</a>
+              </div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-lbl">Location</div>
+              <div class="ci-val">India — Pan-India Service</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">🕐</div>
+            <div>
+              <div class="ci-lbl">Business Hours</div>
+              <div class="ci-val">Mon–Sat: 9:00 AM – 7:00 PM</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">🏆</div>
+            <div>
+              <div class="ci-lbl">Established</div>
+              <div class="ci-val">Since 1998 — 25+ Years of Excellence</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap reveal-r">
+        <div class="form-h3">Send an Inquiry</div>
+        <div class="frow">
+          <div class="fg"><label class="fl">Your Name *</label><input type="text" class="fi"
+              placeholder="Enter Your Name" required>
+          </div>
+          <div class="fg"><label class="fl">Phone *</label><input type="tel" class="fi" placeholder="Enter Your Numbr"
+              required>
+          </div>
+        </div>
+        <div class="fg"><label class="fl">Email</label><input type="email" class="fi" placeholder="Enter Your Email Id">
+        </div>
+        <div class="fg">
+          <label class="fl">I Need *</label>
+          <select class="fs" required>
+            <option value="">Select inquiry type...</option>
+            <option>Machine Purchase</option>
+            <option>Spare Parts</option>
+            <option>Machine Repair</option>
+            <option>AMC Contract</option>
+            <option>Factory Setup</option>
+            <option>Installation</option>
+            <option>Emergency Repair</option>
+            <option>Technical Consultation</option>
+            <option>Dealer Partnership</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">Message *</label><textarea class="fta"
+            placeholder="Tell us about your requirements — machine model, quantity, location or specific needs..."
+            required></textarea>
+        </div>
+        <button class="fsub" onclick="submitInquiry(this)">Send Inquiry →</button>
+        <p style="font-size:11.5px;color:var(--gray);text-align:center;margin-top:12px;">Typically respond within 2
+          hours during business hours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ FOOTER ═══ -->
+  <footer>
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="foot-logo">SHREEJI <span class="g">TRADERS</span></div>
+        <div class="foot-since">Established 1998 · 25+ Years of Excellence</div>
+        <div class="foot-tag">Precision. Performance. Trust.<br>India's premium industrial sewing machine dealer —
+          sales, service, spare parts & AMC solutions.</div>
+        <div class="foot-soc"><a href="#" title="Facebook">📘</a><a href="#" title="Instagram">📷</a><a
+            href="https://wa.me/919723120363" title="WhatsApp" target="_blank">💬</a><a href="#" title="YouTube">▶️</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#products">Jack A4 / A4C</a></li>
+          <li><a href="#products">Juki DDL Series</a></li>
+          <li><a href="#products">Brother 6150</a></li>
+          <li><a href="#products">Singer SS 9900</a></li>
+          <li><a href="#products">Primex PX-10</a></li>
+          <li><a href="#products">JUKI Interlock</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Machine Repair</a></li>
+          <li><a href="#services">AMC Contracts</a></li>
+          <li><a href="#services">Factory Setup</a></li>
+          <li><a href="#services">Installation</a></li>
+          <li><a href="#services">Emergency Repair</a></li>
+          <li><a href="#services">Preventive Maintenance</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#industries">Industries</a></li>
+          <li><a href="#why">Why Choose Us</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#dealer">Dealer Program</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div>© 2025 Shreeji Traders. All rights reserved. Est. 1998.</div>
+      <div style="display:flex;gap:20px;"><a href="#">Privacy Policy</a><a href="#">Terms</a><a href="#">Sitemap</a>
+      </div>
+      <div>Precision. Performance. Trust. 🧵</div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════ AI CHAT ═══ -->
+  <!-- <div id="ai-chat-widget" class="ai-chat-widget">
+    <div class="chat-header">
+      <div class="chat-h-info">
+        <div class="chat-av">🤖</div>
+        <div>
+          <div class="chat-name">Shreeji AI Expert</div>
+          <div class="chat-status">Online & Ready</div>
+        </div>
+      </div>
+      <button class="chat-close-btn" onclick="toggleChat()">✕</button>
+    </div>
+    <div id="chat-guest-banner" class="chat-guest-banner" style="display:none;">⚠️ <strong>Demo Mode</strong> — You're
+      in guest mode. Responses are for demonstration. <a href="#" onclick="openAuth('register')"
+        style="color:var(--gold);">Register for full access →</a></div>
+    <div class="chat-msgs" id="chat-msgs"></div>
+    <div class="chat-sugg" id="chat-sugg">
+      <button class="sugg-btn" onclick="askAI(this.textContent)">Best machine for garment factory?</button>
+      <button class="sugg-btn" onclick="askAI(this.textContent)">Jack A4 specifications</button>
+      <button class="sugg-btn" onclick="askAI(this.textContent)">Book machine repair</button>
+      <button class="sugg-btn" onclick="askAI(this.textContent)">AMC pricing</button>
+      <button class="sugg-btn" onclick="askAI(this.textContent)">Juki spare parts?</button>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" id="chat-inp" placeholder="Ask about machines, parts, service..."
+        onkeydown="if(event.key==='Enter')sendChat()">
+      <button class="chat-send" onclick="sendChat()">Send →</button>
+    </div>
+  </div> -->
+  <a id="wa-float" href="https://wa.me/919723120363?text=Hello%20Shreeji%20Traders!" target="_blank"
+    title="WhatsApp">💬</a>
+  <button id="chat-fab" onclick="toggleChat()" title="Chat with AI">🤖</button>
+
+  <!-- ═══════════════════════════════════ PRODUCT MODAL ═══ -->
+  <div class="inline-modal-backdrop" id="prod-modal">
+    <div class="inline-modal" style="max-width:600px;">
+      <button class="im-close" onclick="closeProdModal()">✕</button>
+      <div id="prod-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ ADD PRODUCT MODAL ═══ -->
+  <div class="inline-modal-backdrop" id="add-prod-modal">
+    <div class="inline-modal">
+      <button class="im-close" onclick="document.getElementById('add-prod-modal').classList.remove('open')">✕</button>
+      <div class="im-title" id="add-prod-modal-title">Add New Product</div>
+      <div class="fg"><label class="fl">Product Title</label><input type="text" class="fi" id="ap-title"
+          placeholder="e.g. Jack A4 Industrial Lockstitch"></div>
+      <div class="frow">
+        <div class="fg"><label class="fl">Brand Name</label><input type="text" class="fi" id="ap-brand"
+            placeholder="Jack"></div>
+        <div class="fg"><label class="fl">Model Name</label><input type="text" class="fi" id="ap-model"
+            placeholder="A4"></div>
+      </div>
+      <div class="fg"><label class="fl">Category</label><select class="fs" id="ap-cat">
+          <option value="industrial">Industrial</option>
+          <option value="computerized">Computerized</option>
+          <option value="overlock">Overlock/Interlock</option>
+          <option value="domestic">Domestic</option>
+          <option value="embroidery">Embroidery</option>
+        </select></div>
+      <div class="fg"><label class="fl">Badge Label</label><input type="text" class="fi" id="ap-badge"
+          placeholder="BESTSELLER"></div>
+      <div class="fg"><label class="fl">Short Description</label><textarea class="fta" id="ap-desc"
+          style="min-height:80px;" placeholder="Brief description..."></textarea></div>
+      <div class="fg"><label class="fl">Tags (comma-separated)</label><input type="text" class="fi" id="ap-tags"
+          placeholder="5500 RPM, Direct Drive, Auto Trimmer"></div>
+      <div class="fg"><label class="fl">Image URL (optional)</label><input type="text" class="fi" id="ap-img"
+          placeholder="https://..."></div>
+      <input type="hidden" id="ap-edit-id" value="">
+      <button class="fsub" onclick="saveProduct()">Save Product →</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ ADD PART MODAL ═══ -->
+  <div class="inline-modal-backdrop" id="add-part-modal">
+    <div class="inline-modal">
+      <button class="im-close" onclick="document.getElementById('add-part-modal').classList.remove('open')">✕</button>
+      <div class="im-title" id="add-part-modal-title">Add New Spare Part</div>
+      <div class="fg"><label class="fl">Part Name</label><input type="text" class="fi" id="apr-name"
+          placeholder="e.g. Industrial Needles"></div>
+      <div class="frow">
+        <div class="fg"><label class="fl">Category</label><select class="fs" id="apr-cat">
+            <option value="needles">Needles</option>
+            <option value="motion">Motion Parts</option>
+            <option value="electrical">Electrical</option>
+            <option value="accessories">Accessories</option>
+            <option value="oils">Oils</option>
+          </select></div>
+        <div class="fg"><label class="fl">Icon (emoji)</label><input type="text" class="fi" id="apr-icon"
+            placeholder="🪡" maxlength="4"></div>
+      </div>
+      <input type="hidden" id="apr-edit-id" value="">
+      <button class="fsub" onclick="savePart()">Save Part →</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ ADMIN PANEL ═══ -->
+  <div id="admin-panel">
+    <div class="adm-layout">
+      <!-- SIDEBAR -->
+      <div class="adm-sidebar">
+        <div class="adm-logo">
+          <div class="adm-logo-txt">SHREEJI <span class="g">ADMIN</span></div>
+          <div class="adm-logo-sub">Control Panel</div>
+        </div>
+        <div class="adm-nav">
+          <div class="adm-nav-sep">Overview</div>
+          <button class="adm-nav-item active" onclick="admNav('dashboard',this)"><span
+              class="adm-nav-icon">📊</span>Dashboard</button>
+          <div class="adm-nav-sep">Content</div>
+          <button class="adm-nav-item" onclick="admNav('products',this)"><span
+              class="adm-nav-icon">🧵</span>Products</button>
+          <button class="adm-nav-item" onclick="admNav('parts',this)"><span class="adm-nav-icon">🔩</span>Spare
+            Parts</button>
+          <button class="adm-nav-item" onclick="admNav('services',this)"><span
+              class="adm-nav-icon">🔧</span>Services</button>
+          <div class="adm-nav-sep">Users</div>
+          <button class="adm-nav-item" onclick="admNav('users',this)"><span class="adm-nav-icon">👥</span>All
+            Users</button>
+          <button class="adm-nav-item" onclick="admNav('leads',this)"><span class="adm-nav-icon">📋</span>Leads &
+            Inquiries</button>
+          <div class="adm-nav-sep">Dealer</div>
+          <button class="adm-nav-item" onclick="admNav('dealer',this)"><span class="adm-nav-icon">🤝</span>Dealer
+            System</button>
+          <button class="adm-nav-item" onclick="admNav('dealer-apps',this)"><span
+              class="adm-nav-icon">📝</span>Applications</button>
+          <div class="adm-nav-sep">AI & Settings</div>
+          <button class="adm-nav-item" onclick="admNav('ai-knowledge',this)"><span class="adm-nav-icon">🤖</span>AI
+            Knowledge</button>
+          <button class="adm-nav-item" onclick="admNav('site-settings',this)"><span class="adm-nav-icon">⚙️</span>Site
+            Settings</button>
+          <button class="adm-nav-item" onclick="admNav('seo',this)"><span class="adm-nav-icon">🔍</span>SEO
+            Manager</button>
+        </div>
+        <div class="adm-bottom">
+          <button class="adm-nav-item" onclick="closeAdminPanel()"><span class="adm-nav-icon">🚪</span>Back to
+            Site</button>
+        </div>
+      </div>
+      <!-- MAIN -->
+      <div class="adm-main">
+        <!-- DASHBOARD -->
+        <div class="adm-section active" id="adm-dashboard">
+          <div class="adm-topbar">
+            <div class="adm-page-title">Dashboard</div>
+            <div class="adm-user-info">
+              <div class="adm-av">AD</div><span style="font-size:13px;color:var(--gray);">Admin</span>
+            </div>
+          </div>
+          <div class="adm-stat-grid">
+            <div class="adm-stat-card">
+              <div class="adm-sc-icon">👥</div>
+              <div class="adm-sc-num" id="ds-total-users">24</div>
+              <div class="adm-sc-lbl">Total Users</div>
+            </div>
+            <div class="adm-stat-card">
+              <div class="adm-sc-icon">👤</div>
+              <div class="adm-sc-num" id="ds-guest">8</div>
+              <div class="adm-sc-lbl">Guest Users</div>
+            </div>
+            <div class="adm-stat-card">
+              <div class="adm-sc-icon">⚡</div>
+              <div class="adm-sc-num" id="ds-trial">12</div>
+              <div class="adm-sc-lbl">Trial Users</div>
+            </div>
+            <div class="adm-stat-card">
+              <div class="adm-sc-icon">⏰</div>
+              <div class="adm-sc-num" id="ds-expired">4</div>
+              <div class="adm-sc-lbl">Expired Trials</div>
+            </div>
+            <div class="adm-stat-card">
+              <div class="adm-sc-icon">📋</div>
+              <div class="adm-sc-num" id="ds-leads">37</div>
+              <div class="adm-sc-lbl">Leads Generated</div>
+            </div>
+            <div class="adm-stat-card">
+              <div class="adm-sc-icon">🤝</div>
+              <div class="adm-sc-num" id="ds-dealer-apps">5</div>
+              <div class="adm-sc-lbl">Dealer Applications</div>
+            </div>
+          </div>
+          <div class="adm-card">
+            <div class="adm-card-title">Quick Controls</div>
+            <div class="adm-toggle-row">
+              <div class="adm-toggle-info">
+                <div class="adm-toggle-title">Inquiry Receive</div>
+                <div class="adm-toggle-sub">Enable / disable all inquiry forms sitewide</div>
+              </div>
+              <div class="toggle-switch on" id="tgl-inquiry" onclick="toggleSetting('inquiry',this)">
+                <div class="toggle-knob"></div>
+              </div>
+            </div>
+            <div class="adm-toggle-row">
+              <div class="adm-toggle-info">
+                <div class="adm-toggle-title">Guest Mode</div>
+                <div class="adm-toggle-sub">Allow visitors to browse in guest / demo mode</div>
+              </div>
+              <div class="toggle-switch on" id="tgl-guest" onclick="toggleSetting('guest',this)">
+                <div class="toggle-knob"></div>
+              </div>
+            </div>
+            <div class="adm-toggle-row">
+              <div class="adm-toggle-info">
+                <div class="adm-toggle-title">Dealer Program</div>
+                <div class="adm-toggle-sub">Show/hide dealer section across site and AI</div>
+              </div>
+              <div class="toggle-switch on" id="tgl-dealer" onclick="toggleSetting('dealer',this)">
+                <div class="toggle-knob"></div>
+              </div>
+            </div>
+            <div class="adm-toggle-row">
+              <div class="adm-toggle-info">
+                <div class="adm-toggle-title">Hero Section</div>
+                <div class="adm-toggle-sub">Show / hide hero section</div>
+              </div>
+              <div class="toggle-switch on" id="tgl-hero" onclick="toggleSetting('hero',this)">
+                <div class="toggle-knob"></div>
+              </div>
+            </div>
+            <div class="adm-toggle-row">
+              <div class="adm-toggle-info">
+                <div class="adm-toggle-title">Testimonials Section</div>
+                <div class="adm-toggle-sub">Show / hide testimonials section</div>
+              </div>
+              <div class="toggle-switch on" id="tgl-testi" onclick="toggleSetting('testi',this)">
+                <div class="toggle-knob"></div>
+              </div>
+            </div>
+          </div>
+          <div class="adm-card">
+            <div class="adm-card-title">Trial System Duration<span
+                style="font-size:12px;color:var(--gray);font-weight:400;">Current: <strong id="trial-duration-lbl"
+                  style="color:var(--gold);">7 days</strong></span></div>
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+              <span style="font-size:13px;color:var(--gray);">Trial Duration:</span>
+              <select class="fs" id="trial-days-select" style="width:auto;padding:8px 14px;"
+                onchange="updateTrialDuration(this.value)">
+                <option value="3">3 Days</option>
+                <option value="7" selected>7 Days</option>
+                <option value="14">14 Days</option>
+                <option value="30">30 Days</option>
+              </select>
+              <span style="font-size:12px;color:var(--gray);">days after registration</span>
+            </div>
+          </div>
+        </div>
+        <!-- PRODUCTS -->
+        <div class="adm-section" id="adm-products">
+          <div class="adm-topbar">
+            <div class="adm-page-title">Manage Products</div><button class="adm-btn adm-btn-gold"
+              onclick="openAddProduct()">+ Add Product</button>
+          </div>
+          <div class="adm-card">
+            <div id="adm-products-list"></div>
+          </div>
+        </div>
+        <!-- PARTS -->
+        <div class="adm-section" id="adm-parts">
+          <div class="adm-topbar">
+            <div class="adm-page-title">Manage Spare Parts</div><button class="adm-btn adm-btn-gold"
+              onclick="openAddPart()">+ Add Part</button>
+          </div>
+          <div class="adm-card">
+            <div id="adm-parts-list"></div>
+          </div>
+        </div>
+        <!-- SERVICES -->
+        <div class="adm-section" id="adm-services">
+          <div class="adm-topbar">
+            <div class="adm-page-title">Manage Services</div>
+          </div>
+          <div class="adm-card">
+            <p style="color:var(--gray);font-size:13px;">Service cards management coming soon. Currently showing 8
+              default services on the site.</p>
+          </div>
+        </div>
+        <!-- USERS -->
+        <div class="adm-section" id="adm-users">
+          <div class="adm-topbar">
+            <div class="adm-page-title">All Users</div>
+          </div>
+          <div class="adm-card">
+            <div class="adm-card-title">Registered Users</div>
+            <div style="overflow-x:auto;">
+              <table class="adm-table" id="users-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Joined</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="users-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- LEADS -->
+        <div class="adm-section" id="adm-leads">
+          <div class="adm-topbar">
+            <div class="adm-page-title">Leads & Inquiries</div>
+          </div>
+          <div class="adm-card">
+            <div style="overflow-x:auto;">
+              <table class="adm-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Message</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="leads-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- DEALER TOGGLE -->
+        <div class="adm-section" id="adm-dealer">
+          <div class="adm-topbar">
+            <div class="adm-page-title">Dealer System</div>
+          </div>
+          <div class="adm-card">
+            <div class="adm-card-title">Dealer Program Control</div>
+            <div class="adm-toggle-row">
+              <div class="adm-toggle-info">
+                <div class="adm-toggle-title">Dealer Program Status</div>
+                <div class="adm-toggle-sub" id="dealer-status-sub">Program is currently ENABLED — dealer section visible
+                  on site</div>
+              </div>
+              <div class="toggle-switch on" id="tgl-dealer2" onclick="toggleSetting('dealer2',this)">
+                <div class="toggle-knob"></div>
+              </div>
+            </div>
+            <div
+              style="margin-top:16px;padding:14px;background:var(--surface2);border-radius:8px;font-size:12.5px;color:var(--gray);line-height:1.7;">
+              <strong style="color:var(--white);">When DISABLED:</strong> Dealer section hidden from site, AI will not
+              mention dealer program, registration blocked.<br>
+              <strong style="color:var(--white);">When ENABLED:</strong> Full dealer system visible, registration form
+              active, AI includes dealer information.
+            </div>
+          </div>
+          <div class="adm-card">
+            <div class="adm-card-title">Guest Mode Message (Editable)</div>
+            <div class="fg"><label class="fl">Guest Warning Message</label><textarea class="fta" id="guest-msg-edit"
+                style="min-height:80px;">⚠️ Demo Mode — You are browsing as a guest. Responses are for demonstration purposes only. Register for real bookings and full access.</textarea>
+            </div>
+            <button class="adm-btn adm-btn-gold" onclick="saveGuestMsg()">Save Message</button>
+          </div>
+        </div>
+        <!-- DEALER APPS -->
+        <div class="adm-section" id="adm-dealer-apps">
+          <div class="adm-topbar">
+            <div class="adm-page-title">Dealer Applications</div>
+          </div>
+          <div class="adm-card">
+            <div style="overflow-x:auto;">
+              <table class="adm-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Business</th>
+                    <th>Location</th>
+                    <th>Investment</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="dealer-apps-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- AI KNOWLEDGE -->
+        <div class="adm-section" id="adm-ai-knowledge">
+          <div class="adm-topbar">
+            <div class="adm-page-title">AI Knowledge Base</div>
+          </div>
+          <div class="adm-card">
+            <div class="adm-card-title">Knowledge Toggles</div>
+            <div class="adm-toggle-row">
+              <div class="adm-toggle-info">
+                <div class="adm-toggle-title">Products Knowledge</div>
+                <div class="adm-toggle-sub">AI can answer questions about products and machines</div>
+              </div>
+              <div class="toggle-switch on" onclick="this.classList.toggle('on');this.classList.toggle('off')">
+                <div class="toggle-knob"></div>
+              </div>
+            </div>
+            <div class="adm-toggle-row">
+              <div class="adm-toggle-info">
+                <div class="adm-toggle-title">Services Knowledge</div>
+                <div class="adm-toggle-sub">AI can answer questions about repair and AMC services</div>
+              </div>
+              <div class="toggle-switch on" onclick="this.classList.toggle('on');this.classList.toggle('off')">
+                <div class="toggle-knob"></div>
+              </div>
+            </div>
+            <div class="adm-toggle-row">
+              <div class="adm-toggle-info">
+                <div class="adm-toggle-title">Dealer Program Knowledge</div>
+                <div class="adm-toggle-sub">AI includes dealer information in responses</div>
+              </div>
+              <div class="toggle-switch on" id="tgl-ai-dealer" onclick="toggleSetting('ai-dealer',this)">
+                <div class="toggle-knob"></div>
+              </div>
+            </div>
+            <div class="adm-toggle-row">
+              <div class="adm-toggle-info">
+                <div class="adm-toggle-title">Pricing Knowledge</div>
+                <div class="adm-toggle-sub">AI can discuss pricing and quotation info</div>
+              </div>
+              <div class="toggle-switch on" onclick="this.classList.toggle('on');this.classList.toggle('off')">
+                <div class="toggle-knob"></div>
+              </div>
+            </div>
+            <div class="adm-toggle-row">
+              <div class="adm-toggle-info">
+                <div class="adm-toggle-title">Self-Analysis (Website Sync)</div>
+                <div class="adm-toggle-sub">AI auto-learns from website content updates</div>
+              </div>
+              <div class="toggle-switch on" onclick="this.classList.toggle('on');this.classList.toggle('off')">
+                <div class="toggle-knob"></div>
+              </div>
+            </div>
+          </div>
+          <div class="adm-card">
+            <div class="adm-card-title">Upload Knowledge Documents</div>
+            <div
+              style="border:2px dashed rgba(212,175,55,.2);border-radius:10px;padding:28px;text-align:center;color:var(--gray);font-size:13px;">
+              <div style="font-size:28px;margin-bottom:10px;">📎</div>
+              <div>Upload PDF, PPTX, or DOCX files to train the AI</div>
+              <div style="font-size:11.5px;margin-top:6px;">Supported: Product catalogs, FAQs, Service manuals</div>
+              <button class="adm-btn adm-btn-gold" style="margin-top:14px;"
+                onclick="alert('File upload — connect to backend for production deployment.')">+ Upload
+                Document</button>
+            </div>
+          </div>
+          <div class="adm-card">
+            <div class="adm-card-title">Add FAQ Knowledge</div>
+            <div class="fg"><label class="fl">Question</label><input type="text" class="fi"
+                placeholder="e.g. What is AMC contract pricing?"></div>
+            <div class="fg"><label class="fl">Answer</label><textarea class="fta"
+                placeholder="Enter the AI's response for this question..."></textarea></div>
+            <button class="adm-btn adm-btn-gold">+ Add FAQ →</button>
+          </div>
+        </div>
+        <!-- SITE SETTINGS -->
+        <div class="adm-section" id="adm-site-settings">
+          <div class="adm-topbar">
+            <div class="adm-page-title">Site Settings</div>
+          </div>
+          <div class="adm-card">
+            <div class="adm-card-title">Business Information</div>
+            <div class="frow">
+              <div class="fg"><label class="fl">Business Name</label><input type="text" class="fi"
+                  value="SHREEJI TRADERS" id="ss-biz-name"></div>
+              <div class="fg"><label class="fl">Logo Text</label><input type="text" class="fi" value="SHREEJI TRADERS"
+                  id="ss-logo-text"></div>
+            </div>
+            <div class="frow">
+              <div class="fg"><label class="fl">Phone / WhatsApp</label><input type="tel" class="fi"
+                  value="+91 97231 20363" id="ss-phone"></div>
+              <div class="fg"><label class="fl">Email</label><input type="email" class="fi"
+                  value="Shreejitraders120363@gmail.com" id="ss-email"></div>
+            </div>
+            <div class="fg"><label class="fl">Address</label><input type="text" class="fi"
+                value="India — Pan-India Service" id="ss-address"></div>
+            <button class="adm-btn adm-btn-gold" onclick="saveSettings()">Save Settings →</button>
+          </div>
+          <div class="adm-card">
+            <div class="adm-card-title">Inquiry Receive Settings</div>
+            <div class="adm-toggle-row">
+              <div class="adm-toggle-info">
+                <div class="adm-toggle-title">Enable Inquiry Forms</div>
+                <div class="adm-toggle-sub">Toggle contact and quote forms on/off</div>
+              </div>
+              <div class="toggle-switch on" onclick="this.classList.toggle('on');this.classList.toggle('off')">
+                <div class="toggle-knob"></div>
+              </div>
+            </div>
+            <div class="fg" style="margin-top:14px;"><label class="fl">Receive Inquiries to Number</label><input
+                type="tel" class="fi" placeholder="+91 97231 20363" value="+91 97231 20363"></div>
+            <button class="adm-btn adm-btn-gold">Update →</button>
+          </div>
+        </div>
+        <!-- SEO -->
+        <div class="adm-section" id="adm-seo">
+          <div class="adm-topbar">
+            <div class="adm-page-title">SEO Manager</div>
+          </div>
+          <div class="adm-card">
+            <div class="adm-card-title">Meta Tags</div>
+            <div class="fg"><label class="fl">Page Title</label><input type="text" class="fi"
+                value="Shreeji Traders — Industrial Sewing Machines Since 1998"></div>
+            <div class="fg"><label class="fl">Meta Description</label><textarea class="fta"
+                style="min-height:80px;">India's premium industrial sewing machine dealer since 1998. Sales, service, genuine spare parts, AMC & factory setup solutions.</textarea>
+            </div>
+            <div class="fg"><label class="fl">Meta Keywords</label><input type="text" class="fi"
+                value="industrial sewing machine, Jack A4, Juki, Singer, sewing machine repair, AMC India"></div>
+            <button class="adm-btn adm-btn-gold">Save SEO Settings →</button>
+          </div>
+          <div class="adm-card">
+            <div class="adm-card-title">Schema Status</div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px;">
+              <span class="status-pill sp-approved">✓ Local Business Schema</span>
+              <span class="status-pill sp-approved">✓ Product Schema</span>
+              <span class="status-pill sp-approved">✓ Service Schema</span>
+              <span class="status-pill sp-approved">✓ FAQ Schema</span>
+              <span class="status-pill sp-approved">✓ Open Graph</span>
+              <span class="status-pill sp-approved">✓ Robots.txt</span>
+            </div>
+          </div>
+        </div>
+      </div><!-- /adm-main -->
+    </div><!-- /adm-layout -->
+  </div><!-- /admin-panel -->
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
